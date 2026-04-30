@@ -28,6 +28,7 @@ export interface StackToolbarViewProps {
    * Only available in bottom placement.
    *
    * @default false
+   * @platform ios
    */
   separateBackground?: boolean;
 }

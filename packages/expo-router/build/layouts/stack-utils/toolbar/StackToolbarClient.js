@@ -22,7 +22,7 @@ const native_1 = require("../../../toolbar/native");
  *
  * - Use `placement="left"` to customize the left side of the header.
  * - Use `placement="right"` to customize the right side of the header.
- * - Use `placement="bottom"` (default) to show a bottom toolbar (iOS only).
+ * - Use `placement="bottom"` (default) to show a bottom toolbar.
  *
  * If multiple instances of this component are rendered for the same screen,
  * the last one rendered in the component tree takes precedence.
@@ -33,6 +33,16 @@ const native_1 = require("../../../toolbar/native");
  *
  * > **Note:** `Stack.Toolbar` with `placement="bottom"` can only be used inside **page**
  * components, not in layout components.
+ *
+ * > **Note (Android):** The Android implementation has the following limitations:
+ * > - `Stack.Toolbar.Button` and `Stack.Toolbar.Menu` only render `ImageSourcePropType`
+ * >   icons. SF Symbols and `xcasset` icons are silently dropped — provide a
+ * >   `require()`/`{ uri }` source via the `icon` prop or `<Stack.Toolbar.Icon src={...} />`.
+ * > - `Stack.Toolbar.Spacer` requires an explicit `width`. Flexible (omitted-width)
+ * >   spacers render nothing on Android.
+ * > - `Stack.Toolbar.SearchBarSlot` is iOS-only and renders nothing on Android.
+ * > - iOS-26-only props (`hidesSharedBackground`, `separateBackground`, menu `palette`,
+ * >   `inline` at the top level, `elementSize`) are no-ops on Android.
  *
  *
  * @example
@@ -77,6 +87,7 @@ const native_1 = require("../../../toolbar/native");
  * ```
  *
  * @experimental
+ * @platform android
  * @platform ios
  */
 const StackToolbar = (props) => {

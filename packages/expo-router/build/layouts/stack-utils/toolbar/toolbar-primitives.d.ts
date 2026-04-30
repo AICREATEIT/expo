@@ -19,14 +19,27 @@ export type StackToolbarIconProps = {
      * - With `tintColor`: defaults to `'template'`
      * - Without `tintColor`: defaults to `'original'`
      *
+     * On Android, image icons are always template-tinted by Compose. This prop is
+     * a no-op — use the parent component's `iconRenderingMode` instead, which is
+     * honored on both platforms.
+     *
      * @platform ios
      */
     renderingMode?: 'template' | 'original';
 } | {
+    /**
+     * Name of an SF Symbol to display.
+     *
+     * > **Note (Android):** SF Symbols are not rendered on Android. Use the `src`
+     * > variant with an `ImageSourcePropType` to provide a cross-platform icon.
+     */
     sf: SFSymbol;
 } | {
     /**
      * Name of an image in your Xcode asset catalog (`.xcassets`).
+     *
+     * Not supported on Android — Xcode asset catalogs are an iOS-only concept. Use
+     * the `src` variant with an `ImageSourcePropType` for a cross-platform icon.
      *
      * @platform ios
      */
@@ -40,6 +53,8 @@ export type StackToolbarIconProps = {
      * Defaults based on parent component's `tintColor`:
      * - With `tintColor`: defaults to `'template'`
      * - Without `tintColor`: defaults to `'original'`
+     *
+     * Not supported on Android (the `xcasset` variant itself is iOS-only).
      *
      * @platform ios
      */

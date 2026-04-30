@@ -29,6 +29,9 @@ export type { StackToolbarViewProps, NativeToolbarViewProps } from './types';
  * }
  * ```
  *
+ * > **Note (Android):** the `hidesSharedBackground` and `separateBackground` props are
+ * > iOS-only — Android renders the child content without a shared toolbar background.
+ *
  * @platform android
  * @platform ios
  */

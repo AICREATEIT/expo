@@ -11,6 +11,9 @@ export interface StackToolbarSpacerProps {
      * In Left/Right placements, width is required.
      * In Bottom placement, if width is not provided, the spacer will be flexible
      * and expand to fill available space.
+     *
+     * > **Note (Android):** `width` is required in every placement. Flexible spacers are
+     * > iOS-only — on Android, the spacer renders nothing without an explicit `width`.
      */
     width?: number;
     /**

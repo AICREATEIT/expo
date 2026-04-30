@@ -7,6 +7,9 @@ export type { StackToolbarSpacerProps, NativeToolbarSpacerProps } from './types'
  * In left/right placements, width is required.
  * In bottom placement, if width is not provided, creates a flexible spacer that expands to fill space.
  *
+ * > **Note (Android):** flexible spacers are iOS-only. On Android, omitting `width`
+ * > renders nothing — provide an explicit `width` value in any placement.
+ *
  * @example
  * ```tsx
  * import { Stack } from 'expo-router';

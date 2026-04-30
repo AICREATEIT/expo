@@ -46,6 +46,11 @@ const toolbar_primitives_1 = require("../toolbar-primitives");
  * }
  * ```
  *
+ * > **Note (Android):** the `icon` prop must be an `ImageSourcePropType` (use a
+ * > `require()` or `{ uri }` source, or `<Stack.Toolbar.Icon src={...} />`). SF Symbols
+ * > and `xcasset` icons are silently dropped. The `image`, `selected`,
+ * > `hidesSharedBackground`, `separateBackground`, and `variant` props are iOS-only.
+ *
  * @platform android
  * @platform ios
  */

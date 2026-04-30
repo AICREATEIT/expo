@@ -50,7 +50,7 @@ function computeMenuLabelAndTitle(
 }
 
 /**
- * Use as `Stack.Toolbar.Menu` to provide menus in iOS toolbar.
+ * Use as `Stack.Toolbar.Menu` to provide menus in the toolbar.
  * It accepts `Stack.Toolbar.MenuAction` and nested `Stack.Toolbar.Menu`
  * elements. Menu can be configured using both component props and child
  * elements.
@@ -75,6 +75,13 @@ function computeMenuLabelAndTitle(
  *   );
  * }
  * ```
+ *
+ * > **Note (Android):** the root `icon` must be an `ImageSourcePropType` (use a
+ * > `require()` or `{ uri }` source, or `<Stack.Toolbar.Icon src={...} />`); SF Symbols
+ * > and `xcasset` icons are silently dropped. The menu renders as a Compose
+ * > `DropdownMenu`, so `palette`, `elementSize`, `hidesSharedBackground`, top-level
+ * > `inline`, `separateBackground`, `image`, and `destructive` are iOS-only — `inline`
+ * > on a nested submenu is honored as a divider separator.
  *
  * @see [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/menus) for more information about menus on iOS.
  *
@@ -270,6 +277,12 @@ function convertStackToolbarSubmenuMenuPropsToRNHeaderItem(
  *   );
  * }
  * ```
+ *
+ * > **Note (Android):** Renders as a Compose `DropdownMenuItem`. Only
+ * > `ImageSourcePropType` icons are rendered (SF Symbols are dropped). `image`,
+ * > `iconRenderingMode`, `discoverabilityLabel`, and `subtitle` are iOS-only. `isOn`
+ * > renders as a trailing checkmark, and `unstable_keepPresented` keeps the dropdown
+ * > open after the action is invoked.
  *
  * @platform android
  * @platform ios

@@ -11,6 +11,8 @@ const context_1 = require("../context");
  *
  * This component is only available in bottom placement (`<Stack.Toolbar>` or `<Stack.Toolbar placement="bottom">`).
  *
+ * > **Note (Android):** Not supported on Android — the component renders nothing.
+ *
  * @example
  * ```tsx
  * import { Stack } from 'expo-router';

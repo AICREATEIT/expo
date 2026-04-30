@@ -34,6 +34,9 @@ const context_1 = require("../context");
  * }
  * ```
  *
+ * > **Note (Android):** the `hidesSharedBackground` and `separateBackground` props are
+ * > iOS-only — Android renders the child content without a shared toolbar background.
+ *
  * @platform android
  * @platform ios
  */

@@ -51,6 +51,11 @@ export type { StackToolbarButtonProps, NativeToolbarButtonProps } from './types'
  * }
  * ```
  *
+ * > **Note (Android):** the `icon` prop must be an `ImageSourcePropType` (use a
+ * > `require()` or `{ uri }` source, or `<Stack.Toolbar.Icon src={...} />`). SF Symbols
+ * > and `xcasset` icons are silently dropped. The `image`, `selected`,
+ * > `hidesSharedBackground`, `separateBackground`, and `variant` props are iOS-only.
+ *
  * @platform android
  * @platform ios
  */

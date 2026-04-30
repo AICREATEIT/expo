@@ -25,7 +25,7 @@ export interface StackToolbarProps {
   /**
    * Child elements to compose the toolbar. Can include Stack.Toolbar.Button,
    * Stack.Toolbar.Menu, Stack.Toolbar.View, Stack.Toolbar.Spacer, and
-   * Stack.Toolbar.SearchBarSlot (bottom only) components.
+   * Stack.Toolbar.SearchBarSlot (bottom placement, iOS only) components.
    */
   children?: ReactNode;
   /**
@@ -33,7 +33,7 @@ export interface StackToolbarProps {
    *
    * - `'left'`: Renders items in the left area of the header.
    * - `'right'`: Renders items in the right area of the header.
-   * - `'bottom'`: Renders items in the bottom toolbar (iOS only).
+   * - `'bottom'`: Renders items in the bottom toolbar.
    *
    * @default 'bottom'
    */
@@ -76,7 +76,7 @@ export interface StackToolbarProps {
  *
  * - Use `placement="left"` to customize the left side of the header.
  * - Use `placement="right"` to customize the right side of the header.
- * - Use `placement="bottom"` (default) to show a bottom toolbar (iOS only).
+ * - Use `placement="bottom"` (default) to show a bottom toolbar.
  *
  * If multiple instances of this component are rendered for the same screen,
  * the last one rendered in the component tree takes precedence.
@@ -87,6 +87,17 @@ export interface StackToolbarProps {
  *
  * > **Note:** `Stack.Toolbar` with `placement="bottom"` can only be used inside **page**
  * components, not in layout components.
+ *
+ * > **Note (Android):** The Android implementation has the following limitations:
+ * > - `Stack.Toolbar.Button` and `Stack.Toolbar.Menu` only render `ImageSourcePropType`
+ * >   icons. SF Symbols and `xcasset` icons are silently dropped — provide a
+ * >   `require()`/`{ uri }` source via the `icon` prop or `<Stack.Toolbar.Icon src={...} />`.
+ * > - `Stack.Toolbar.Spacer` requires an explicit `width`. Flexible (omitted-width)
+ * >   spacers render nothing on Android.
+ * > - `Stack.Toolbar.SearchBarSlot` is iOS-only and renders nothing on Android.
+ * > - iOS-only menu props (`palette`, top-level `inline`, `elementSize`) and iOS-26-only
+ * >   props (`hidesSharedBackground`, `separateBackground`) are no-ops on Android. A
+ * >   nested `Stack.Toolbar.Menu` with `inline` is honored as a divider separator.
  *
  *
  * @example
@@ -131,6 +142,7 @@ export interface StackToolbarProps {
  * ```
  *
  * @experimental
+ * @platform android
  * @platform ios
  */
 export const StackToolbar = (props: StackToolbarProps) => {

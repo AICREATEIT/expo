@@ -67,26 +67,32 @@ export interface StackToolbarButtonProps {
      *
      * Can be a string representing an SFSymbol or an image source.
      *
-     * > **Note**: When used in `placement="bottom"`, only string SFSymbols are supported. Use the `image` prop to provide custom images.
+     * > **Note**: When used in `placement="bottom"` on iOS, only string SFSymbols are supported. Use the `image` prop to provide custom images.
+     *
+     * > **Note (Android)**: Only `ImageSourcePropType` icons are rendered. SF Symbols and
+     * > `xcasset` names are silently dropped — provide a `require()` or `{ uri }` source.
      */
     icon?: StackHeaderItemSharedProps['icon'];
     /**
      * Image to display in the button.
      *
      * > **Note**: This prop is only supported in toolbar with `placement="bottom"`.
+     *
+     * @platform ios
      */
     image?: ImageRef;
     /**
-     * Controls how image-based icons are rendered on iOS.
+     * Controls how image-based icons are rendered.
      *
-     * - `'template'`: iOS applies tint color to the icon
-     * - `'original'`: Preserves original icon colors (useful for multi-color icons)
+     * - `'template'`: applies tint color to the icon
+     * - `'original'`: preserves original icon colors (useful for multi-color icons)
      *
-     * **Default behavior:**
+     * **Default behavior on iOS:**
      * - If `tintColor` is specified, defaults to `'template'`
      * - If no `tintColor`, defaults to `'original'`
      *
-     * On Android, this prop defaults to `'template'`.
+     * **On Android:** defaults to `'template'`. The icon is always rendered through Compose's
+     * `Icon` and tinted unless `'original'` is set explicitly.
      *
      * This prop only affects image-based icons (not SF Symbols).
      *
@@ -101,12 +107,15 @@ export interface StackToolbarButtonProps {
      * Whether to separate the background of this item from other header items.
      *
      * @default false
+     * @platform ios
      */
     separateBackground?: boolean;
     /**
      * Whether the button is in a selected state
      *
      * @see [Apple documentation](https://developer.apple.com/documentation/uikit/uibarbuttonitem/isselected) for more information
+     *
+     * @platform ios
      */
     selected?: boolean;
     /**
@@ -114,13 +123,14 @@ export interface StackToolbarButtonProps {
      */
     style?: StyleProp<TextStyle>;
     /**
-     * The tint color to apply to the button item
+     * The tint color to apply to the button item.
      *
      * @see [Apple documentation](https://developer.apple.com/documentation/uikit/uibarbuttonitem/tintcolor) for more information.
      */
     tintColor?: StackHeaderItemSharedProps['tintColor'];
     /**
      * @default 'plain'
+     * @platform ios
      */
     variant?: StackHeaderItemSharedProps['variant'];
 }
