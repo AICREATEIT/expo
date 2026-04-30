@@ -64,4 +64,12 @@ export { unstable_navigationEvents } from './navigationEvents';
  */
 export { Tabs } from './layouts/Tabs';
 
+export { ExperimentalStack } from './layouts/experimental-stack';
+export type {
+  ExperimentalStackNavigationOptions,
+  ExperimentalStackNavigationEventMap,
+  ExperimentalStackNavigationProp,
+  ExperimentalStackScreenProps,
+} from './layouts/experimental-stack';
+
 export * from './react-navigation';
